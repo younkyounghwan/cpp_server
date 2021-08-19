@@ -1,2 +1,6 @@
-﻿  GameServer.cpp
-  GameServer.vcxproj -> C:\Users\youn7\computer science\cpp_server\GameServer\Binary\Debug\GameServer.exe
+﻿  pch.cpp
+  AccountManager.cpp
+  GameServer.cpp
+  UserManager.cpp
+  코드를 생성하고 있습니다...
+  GameServer.vcxproj -> C:\Users\youn7\computer science\cpp_server\DeadLock\Binary\Debug\GameServer.exe
