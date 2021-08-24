@@ -1,4 +1,0 @@
-﻿  GameServer.cpp
-  pch.cpp
-C:\Users\youn7\computer science\cpp_server\GameServer\GameServer\pch.h(14,10): fatal error C1083: 포함 파일을 열 수 없습니다. 'Corepch.h': No such file or directory
-  코드를 생성하고 있습니다...
