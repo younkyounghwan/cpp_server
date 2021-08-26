@@ -1,0 +1,9 @@
+﻿  pch.cpp
+  GameServer.cpp
+C:\Users\youn7\computer science\cpp_server\memory_model\GameServer\GameServer.cpp(57,19): warning C4834: 'nodiscard' 특성이 포함된 함수의 반환 값을 버리는 중
+  코드를 생성하고 있습니다.
+  54 of 54 functions (100.0%) were compiled.
+    18 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  코드를 생성했습니다.
+  GameServer.vcxproj -> C:\Users\youn7\computer science\cpp_server\memory_model\Binary\Release\GameServer.exe
