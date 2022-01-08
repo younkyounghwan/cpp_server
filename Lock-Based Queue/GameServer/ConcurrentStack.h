@@ -1,5 +1,4 @@
 #pragma once
-
 #include <mutex>
 
 template<typename T>
@@ -38,7 +37,8 @@ public:
 	void WaitPop(T& value)
 	{
 		unique_lock<mutex> lock(_mutex);
-		_condVar.wait(lock, [this] {return _stack.empty() == false; });
+		_condVar.wait(lock, [this] {return _stack.empty() == false; }); 
+		// lambda
 		value = std::move(_stack.top());
 		_stack.pop();
 	}

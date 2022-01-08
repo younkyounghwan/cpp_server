@@ -7,7 +7,7 @@
 #include <windows.h>
 
 mutex m;
-queue < int32> q;
+queue <int32> q;
 HANDLE handle;
 
 void Producer()
@@ -21,7 +21,6 @@ void Producer()
 		}
 		SetEvent(handle);
 		this_thread::sleep_for(100ms);
-
 	}
 }
 void Consumer()

@@ -31,7 +31,7 @@ void Pop()
 		//	continue;
 		
 		int32 data = 0;
-		if(q.TryPop(OUT data))		
+		if(q.TryPop(OUT data)) // 데이터를 꺼내온다?
 			cout << data << endl;
 	}
 }
