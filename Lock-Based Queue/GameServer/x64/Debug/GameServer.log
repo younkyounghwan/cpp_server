@@ -1,2 +1,7 @@
 ﻿  GameServer.cpp
-  GameServer.vcxproj -> C:\Users\youn7\computer science\cpp_server\Lock-Based Queue\Binary\Debug\GameServer.exe
+C:\Users\youn7\computer science\cpp_server\Lock-Based Queue\GameServer\GameServer.cpp(12,14): error C2143: 구문 오류: ';'이(가) '<' 앞에 없습니다.
+C:\Users\youn7\computer science\cpp_server\Lock-Based Queue\GameServer\GameServer.cpp(12,14): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+C:\Users\youn7\computer science\cpp_server\Lock-Based Queue\GameServer\GameServer.cpp(13,14): error C2143: 구문 오류: ';'이(가) '<' 앞에 없습니다.
+C:\Users\youn7\computer science\cpp_server\Lock-Based Queue\GameServer\GameServer.cpp(13,14): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+C:\Users\youn7\computer science\cpp_server\Lock-Based Queue\GameServer\GameServer.cpp(20,3): error C2065: 'q': 선언되지 않은 식별자입니다.
+C:\Users\youn7\computer science\cpp_server\Lock-Based Queue\GameServer\GameServer.cpp(34,6): error C2065: 'q': 선언되지 않은 식별자입니다.

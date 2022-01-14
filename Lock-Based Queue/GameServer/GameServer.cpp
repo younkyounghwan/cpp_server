@@ -9,14 +9,14 @@
 #include "ConcurrentQueue.h"
 #include "ConcurrentStack.h"
 
-LockQueue<int32> q;
-LockStack<int32> s;
+LockFreeQueue<int32> q;
+LockFreeStack<int32> s;
 
 void Push()
 {
 	while (true)
 	{
-		int32 value = rand() % 100;
+		int32 value = rand() % 100; 
 		q.Push(value);
 
 		this_thread::sleep_for(10ms);

@@ -158,19 +158,26 @@ class LockFreeQueue
 				{
 					if (newCounter.internalCount == 0 && newCounter.externalCountRemaining == 0)
 						delete this;
-				}
-			}
 
-			atomic<T*> data;
-			atomic<NodeCounter> count;
-			CountedNodePtr next;
-		};
-	}
+					break;
+				}
+			}	
+		}
+
+		atomic<T*> data;
+		atomic<NodeCounter> count;
+		CountedNodePtr next;
+	};
 
 public:
-	LockFreeQueue() : _head(new Node), _tail(_head)
+	LockFreeQueue()
 	{
+		CountedNodePtr node;
+		node.ptr = new Node;
+		node.externalCount = 1;
 
+		_head.store(node);
+		_tail.store(node);
 	}
 
 
@@ -188,7 +195,7 @@ public:
 		dummy.ptr = new Node;
 		dummy.externalCount = 1;
 
-		CountedNodePtr oldTail = _tail.load(); //ptr = nullptr
+		CountedNodePtr oldTail = _tail.load(); // data = nullptr
 
 		while (true)
 		{
@@ -210,26 +217,39 @@ public:
 			oldTail.ptr->ReleaseRef();
 
 		}
-
-		//sharded_ptr<T> newData = make_shared<T>(value);
-
-		//Node* dummy = new Node();
-
-		//Node* oldTail = _tail;
-		//oldTail->data.swap(newData);
-		//oldTail->next = dummy;
-
-		//_tail = dummy;
 	}
 
 	shared_ptr<T> TryPop()
 	{
-		//Node* oldeHead = PopHead();
-		//if (oldHead == nullptr)
-		//	return shared_ptr<T>();
-		//shared_ptr<T> res(oldHead->data);
-		//delete oldHead;
-		//return res;
+		// [data][data][data][]
+		// [head][tail]
+
+		CountedNodePtr oldHead = _head.load();
+
+		while (true)
+		{
+			// ÂüÁ¶±Ç È¹µæ (externalCount¸¦ Çö½ÃÁ¡ ±âÁØ +1ÇÑ ¾Ö°¡ ÀÌ±è
+			IncreaseExternalCount(_head, oldHead);
+
+			Node* ptr = oldHead.ptr;
+			if (ptr == _tail.load().ptr)
+			{
+				ptr->ReleaseRef();
+				return shared_ptr<T>();
+			}
+
+			if (_head.compare_exchnage_strong(oldHead, ptr->next))
+			{
+				T* res = ptr->data.exchange(nullptr);
+				FreeExternalCount(oldHead);
+				 
+				return shared_ptr<T>(res);
+
+			}
+
+			ptr->releaseRef();
+
+		}
 	}
 
 private:
@@ -265,7 +285,7 @@ private:
 			if (ptr->count.compare_exchange_strong(oldCounter, newCounter))
 			{
 				if (newCounter.internalCount == 0 && newCounter.externalCountRemaining == 0)
-					delete;
+					delete ptr;
 
 				break;
 			}

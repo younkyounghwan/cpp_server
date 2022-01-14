@@ -1,13 +1,25 @@
 ﻿  ConcurrentQueue.cpp
-C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(170,1): error C2059: 구문 오류: 'public'
-C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(283): message : 컴파일되는 클래스 템플릿 인스턴스화 'LockFreeQueue<T>'에 대한 참조를 확인하세요.
-C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(170,7): error C2150: 'LockFreeQueue<T>::<alignment member>': 비트 필드의 형식은 'int', 'signed int' 또는 'unsigned int'이어야 합니다.
-C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(171,18): error C2059: 구문 오류: ':'
-C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(268,12): error C2760: 구문 오류: ';'을(는) 예기치 않은 토큰입니다. 필요한 토큰은 '식'입니다.
   GameServer.cpp
-C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(170,1): error C2059: 구문 오류: 'public'
-C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(283): message : 컴파일되는 클래스 템플릿 인스턴스화 'LockFreeQueue<T>'에 대한 참조를 확인하세요.
-C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(170,7): error C2150: 'LockFreeQueue<T>::<alignment member>': 비트 필드의 형식은 'int', 'signed int' 또는 'unsigned int'이어야 합니다.
-C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(171,18): error C2059: 구문 오류: ':'
-C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(268,12): error C2760: 구문 오류: ';'을(는) 예기치 않은 토큰입니다. 필요한 토큰은 '식'입니다.
+C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(207,59): error C2839: 오버로드된 'operator ->'의 'int *' 반환 형식이 잘못되었습니다.
+C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(191): message : 클래스 템플릿 멤버 함수 'void LockFreeQueue<int32>::Push(const T &)'을(를) 컴파일하는 중입니다.
+          with
+          [
+              T=int32
+          ]
+C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\GameServer.cpp(20): message : 컴파일되는 함수 템플릿 인스턴스화 'void LockFreeQueue<int32>::Push(const T &)'에 대한 참조를 확인하세요.
+          with
+          [
+              T=int32
+          ]
+C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\GameServer.cpp(12): message : 컴파일되는 클래스 템플릿 인스턴스화 'LockFreeQueue<int32>'에 대한 참조를 확인하세요.
+C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(207,1): error C2232: '->std::unique_ptr<T,std::default_delete<T>>::get': 왼쪽 피연산자에 'class' 형식이 있습니다. '.'를 사용하십시오.
+          with
+          [
+              T=int32
+          ]
+C:\Users\youn7\computer science\cpp_server\Lock-free Queue\GameServer\ConcurrentQueue.h(207,1): error C2661: 'std::_Atomic_storage<_Ty,8>::compare_exchange_strong': 오버로드된 함수에서 1개의 인수를 사용하지 않습니다.
+          with
+          [
+              _Ty=int32 *
+          ]
   코드를 생성하고 있습니다...
