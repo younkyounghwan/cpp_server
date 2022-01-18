@@ -1,9 +1,1 @@
-﻿  pch.cpp
-  CoreGlobal.cpp
-  CorePch.cpp
-  CoreTLS.cpp
-  DeadLockProfiler.cpp
-  Lock.cpp
-  ThreadManager.cpp
-  코드를 생성하고 있습니다...
-  ServerCore.vcxproj -> C:\Users\youn7\computer science\cpp_server\Multi_Thread_Practice #2\Libraries\Debug\ServerCore.lib
+﻿  ServerCore.vcxproj -> C:\Users\youn7\computer science\cpp_server\Reference Counting\Libraries\Debug\ServerCore.lib

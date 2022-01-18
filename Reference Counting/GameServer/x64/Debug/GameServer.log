@@ -1,2 +1,2 @@
 ﻿  GameServer.cpp
-LINK : fatal error LNK1168: C:\Users\youn7\computer science\cpp_server\Multi_Thread_Practice #2\Binary\Debug\GameServer.exe을(를) 쓰기용으로 열 수 없습니다.
+  GameServer.vcxproj -> C:\Users\youn7\computer science\cpp_server\Reference Counting\Binary\Debug\GameServer.exe
