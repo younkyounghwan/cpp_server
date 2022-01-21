@@ -10,6 +10,7 @@
 
 #include "RefCounting.h"
 #include "Memory.h"
+#include "Allocator.h"
 
 
 class Player
@@ -44,11 +45,8 @@ public:
 int main()
 {
 	// [                   [          ] ]
-	Knight* knight = static_cast<Knight*> (xnew <Player>());  // (Knight*)xnew<Player>();
+	xvector<Knight> v(100);
 
-	knight->_hp = 100; // Crash
-
-	xdelete(knight);
-
-
+	xmap<int32, Knight> m;
+	m[100] = Knight();
 }

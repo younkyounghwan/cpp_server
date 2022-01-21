@@ -26,7 +26,7 @@
 template<typename Type, typename... Args> // 인자의 개수가 가변적으로 변함
 Type* xnew(Args&&... args)
 {
-	Type* memory = static_cast<Type*>(Xalloc(sizeof(Type)));
+	Type* memory = static_cast<Type*>(xxalloc(sizeof(Type)));
 
 	new(memory) Type(forward<Args>(args)...);	//placement new
 
@@ -37,5 +37,5 @@ template<typename Type>
 void xdelete(Type* obj)
 {
 	obj->~Type();
-	Xrelease(obj);
+	xxrelease(obj);
 }
