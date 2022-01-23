@@ -1,2 +1,13 @@
-﻿  Allocator.cpp
-  ServerCore.vcxproj -> C:\Users\youn7\computer science\cpp_server\Memory Pool #1\Libraries\Debug\ServerCore.lib
+﻿  pch.cpp
+  Allocator.cpp
+  CoreGlobal.cpp
+  CorePch.cpp
+  CoreTLS.cpp
+  DeadLockProfiler.cpp
+  Lock.cpp
+  Memory.cpp
+  MemoryPool.cpp
+  RefCounting.cpp
+  ThreadManager.cpp
+  코드를 생성하고 있습니다...
+  ServerCore.vcxproj -> C:\Users\youn7\computer science\cpp_server\Memory Pool #2\Libraries\Debug\ServerCore.lib

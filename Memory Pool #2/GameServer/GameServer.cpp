@@ -11,57 +11,30 @@
 #include "RefCounting.h"
 #include "Memory.h"
 #include "Allocator.h"
+#include "LockFreeStack.h"
 
-
-class Player
+class Data // : public SListEntry 
 {
 public:
-	Player() {}
-	virtual ~Player() {}
-};
+	SListEntry _entry;
 
-class Knight : public Player
-{
-public:
-	Knight()
-	{
-		cout << "Knight()" << endl;
-	}
-
-	Knight(int32 hp) : _hp(hp) 
-	{
-		cout << "Knight(hp)" << endl;
-	}
-
-	~Knight()
-	{
-		cout << "~Knight()" << endl;
-	}
-
-	int32 _hp = 100;
-	int32 _mp = 10;
+	int32 _hp;
+	int32 _mp;
 };
 
 int main()
 {
-	for (int32 i = 0; i < 5; i++)
-	{
-		GThreadManager->Launch([]()
-			{
-				while (true)
-				{
-					//[ ][ ][ ][ ][ ][ ][ ][ ][ ]
-					// [             [        ] ]
-					xvector<Knight> v(10);
+	SListHeader header;
 
-					xmap<int32, Knight> m;
-					m[100] = Knight();
+	InitializeHead(&header);
 
-					this_thread::sleep_for(10ms);
-				}
-			});
-	}
+	Data* data = new Data();
+	data->_hp;
+	data->_mp;
+	
+	PushEntrySList(&header, (SListEntry*)data);
 
-	GThreadManager->Join();
+	Data* popData = (Data*)PopEntrySList(&header);
+
 
 }
