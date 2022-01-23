@@ -13,28 +13,60 @@
 #include "Allocator.h"
 #include "LockFreeStack.h"
 
+
+DECLSPEC_ALIGN(16)
 class Data // : public SListEntry 
 {
 public:
 	SListEntry _entry;
 
-	int32 _hp;
-	int32 _mp;
+	int64 _rand = rand() % 1000;
 };
-
+SListHeader* GHeader;
 int main()
 {
-	SListHeader header;
+	GHeader = new SListHeader();
+	ASSERT_CRASH(((uint64)GHeader % 16) == 0);
 
-	InitializeHead(&header);
+	InitializeHead(GHeader);
 
-	Data* data = new Data();
-	data->_hp;
-	data->_mp;
-	
-	PushEntrySList(&header, (SListEntry*)data);
+	for (int32 i = 0; i < 3; i++)
+	{
+		GThreadManager->Launch([]()
+			{
+				while (true)
+				{
+					Data* data = new Data();
+					ASSERT_CRASH(((uint64)data % 16) == 0);
 
-	Data* popData = (Data*)PopEntrySList(&header);
 
+					PushEntrySList(GHeader, (SListEntry*)data);
+					this_thread::sleep_for(10ms);
+				}
+			});
+	}
+
+	for (int32 i = 0; i < 2; i++)
+	{
+		GThreadManager->Launch([]()
+			{
+				while (true)
+				{
+					Data* pop = nullptr;
+					pop = (Data*)PopEntrySList(GHeader);
+
+					if (pop)
+					{
+						cout << pop->_rand << endl;
+						delete pop;
+					}
+					else
+					{
+						cout << "None" << endl;
+					}
+				}
+			});
+	}
+	GThreadManager->Join();
 
 }
