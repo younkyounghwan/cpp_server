@@ -1,6 +1,11 @@
 #pragma once
 
 
+enum
+{
+	SLIST_ALIGMENT = 16
+};
+
 /*------------------
 	MemoryHeader
 --------------------*/
