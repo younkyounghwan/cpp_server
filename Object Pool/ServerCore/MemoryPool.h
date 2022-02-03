@@ -3,7 +3,7 @@
 
 enum
 {
-	SLIST_ALIGMENT = 16
+	SLIST_ALIGNMENT = 16
 };
 
 /*------------------
@@ -13,7 +13,7 @@ enum
 // [ ][ ][ ][ ][ ][ ][ ]
 // 특정크기 바이트들인 객체을 모아서 하나의 pool에서 관리
 
-DECLSPEC_ALIGN(SLIST_ALIGMENT)
+DECLSPEC_ALIGN(SLIST_ALIGNMENT)
 struct MemoryHeader : public SLIST_ENTRY
 {
 	// [MemoryHeader][data]
@@ -39,6 +39,7 @@ struct MemoryHeader : public SLIST_ENTRY
 	MemoryPool
 --------------------*/
 
+DECLSPEC_ALIGN(SLIST_ALIGNMENT)
 class MemoryPool
 {
 public:
@@ -52,7 +53,8 @@ public:
 private:
 	SLIST_HEADER	_header;
 	int32			_allocSize = 0;
-	atomic<int32>	_allocCount = 0;
+	atomic<int32>	_useCount = 0;
+	atomic<int32>	_reserveCount = 0;
 
 };
 
